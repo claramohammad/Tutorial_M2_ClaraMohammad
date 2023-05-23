@@ -21,7 +21,7 @@ app.get('/Pessoa', (req, res) => {
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Origin', '*');
     var db = new sqlite3.Database(DBPATH); // Abre o banco
-    var sql = 'SELECT * FROM pessoa ORDER BY id COLLATE NOCASE';
+    var sql = 'SELECT id, nome, ocupacao FROM pessoa ORDER BY id COLLATE NOCASE';
         db.all(sql, [],  (err, rows ) => {
             if (err) {
                 throw err;
@@ -52,7 +52,7 @@ app.post('/inserePessoa', urlencodedParser, (req, res) => {
 app.get('/atualizaPessoa', (req, res) => {
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Origin', '*'); 
-    sql = "SELECT * FROM pessoa WHERE id="+ req.query.id;
+    sql = "SELECT id, nome, ocupacao FROM pessoa WHERE id="+ req.query.id;
     console.log(sql);
     var db = new sqlite3.Database(DBPATH); // Abre o banco
     db.all(sql, [],  (err, rows ) => {
