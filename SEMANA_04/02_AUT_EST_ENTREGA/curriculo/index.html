@@ -1,15 +1,20 @@
 <html>
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
-	<title>Tutorial - Layout Responsivo</title>
-    <link rel="stylesheet" type="text/css" href="estilo.css">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+		<title>Tutorial - Layout Responsivo</title>
+		<link rel="stylesheet" type="text/css" href="estilo.css">
+		<style>
+			.hidden {
+			  display: none;
+			}
+		  </style>
 	</head>
 	
 	<body>
 		<h1>Currículo</h1>
 		
-		<div class="secao">
+		<div class="secao hidden" id="dadosPessoais">
 			<h2>Dados Pessoais</h2>			
 				<div id="hcard-Ademir-Mazer-Jr" class="vcard">
 				 <span class="given-name">Clara</span>
@@ -17,31 +22,54 @@
 				  <span class="family-name"></span>
 
 				 <a class="email" href="mailto:claracmohammad@gmail.com">claracmohammad@gmail.com</a>
-                 <a class="linkedin" href="https://www.linkedin.com/in/claramohammad/">Linkedin: Clara Mohammad</a><br>
-				  <!-- <a class="url" href="http://ademir.winponta.com.br">http://ademir.winponta.com.br</a> -->
+
+				 <!--incluindo Jquery-->
+                 <div id="linkedinLink"></div>
+
+					<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+					<script>
+					$(document).ready(function() {
+  					  var linkedinURL = "https://www.linkedin.com/in/claramohammad/";
+
+  					  var linkedinLink = $("<a>", {
+    					class: "linkedin",
+   						href: linkedinURL,
+    					text: "Linkedin: Clara Mohammad"
+  					});
+
+  					$("#linkedinLink").append(linkedinLink);
+					});
+					</script>
+
                  <a class="phone" href="tel:+5571997076626">(71) 99707-6626</a>
 
 				
 				<div class="adr">
-				  <span class="locality">São Paulo</span>
-			    , 
+				  <span class="locality">São Paulo</span>, 
 				  <span class="region">SP</span>
-
-				 </div>
 				</div>
+			</div>
 		</div>
 
-		<div class="secao">
+		<div class="secao hidden" id="dadosProfissionais">
 			<h2>Dados Profissionais</h2>
-			
 			<p><label>Formação</label>Inteli</p>
 		</div>
 
-		<div class="secao">
+		<div class="secao hidden" id="formacao">
 			<h2>Formação</h2>
-			
 			<p><label>Curso</label>Engenharia de Software</p>
             <img src="C:\Users\inteli\Downloads\Clara_Coelho_Mohammad_ (7) (1).jpg" width="170" height="200" alt="photo of Clara" class="photo"/>
 		</div>
+		<button id="btnMostrar" type="button">Ver Currículo</button>
+
+  		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  		<script>
+    		$(document).ready(function() {
+     		$('#btnMostrar').click(function() {
+        	$('#dadosPessoais, #dadosProfissionais, #formacao').removeClass('hidden');
+      	});
+    	});
+  		</script>
 	</body>
 </html>

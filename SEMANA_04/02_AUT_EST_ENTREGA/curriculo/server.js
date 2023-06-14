@@ -30,7 +30,6 @@ app.get('/Pessoa', (req, res) => {
         });
         db.close(); // Fecha o banco
 });
-
 // Insere um registro (é o C do CRUD - Create)
 app.post('/inserePessoa', urlencodedParser, (req, res) => {
     res.statusCode = 200;
@@ -96,6 +95,8 @@ app.get('/removePessoa', urlencodedParser, (req, res) => {
     });
     db.close(); // Fecha o banco
 });
+// agora eu irei criar um endpoints pra criar uma tabela chamada MERDA
+
 
 app.listen(port, hostname, () => {
 console.log(`Servidor rodando em http://${hostname}:${port}/`);
